@@ -16,9 +16,6 @@ body {
     font-style: normal;
     padding: 0;
     background: #000;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
 }
 
 button {
