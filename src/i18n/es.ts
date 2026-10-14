@@ -12,5 +12,5 @@ export default {
     },
 
     SEO_TITLE: "Daniel Garcia | @dgarcia024 | Portafolio",
-    SEO_DESCRIPTION: "Hola, Soy Daniel Garcia. Soy un Ingeniero en Computación con seis años de experiencia en desarrollo de software y optimización de procesos críticos."
+    SEO_DESCRIPTION: "Hola, Soy Daniel Garcia. Ingeniero en Computación con seis años de experiencia en desarrollo de software y optimización de procesos críticos."
 }

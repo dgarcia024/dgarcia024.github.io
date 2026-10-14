@@ -2,32 +2,72 @@
 import { Image } from "astro:assets";
 import profile from "../assets/avatar.png";
 import Header from "./Header.astro";
+import {  getI18N } from '../i18n';
+const {  currentLocale } = Astro;
+const i18n = getI18N({currentLocale});
+// import ParticlesBackground from "./ParticlesBackground.astro"; // Importar el nuevo componente
 ---
 
-<section id="home" class="container">
+<section id="home" class="relative container min-h-[80vh] flex flex-col items-center justify-center py-16 overflow-hidden">
+    
+    <!-- Componente de Partículas de Fondo, detrás de todo -->
+    <!-- <ParticlesBackground /> -->
+    
     <Header />
-    <div class="flex flex-col gap-4 md:flex-row">
-        <div class="grow p-4">
-            <Image
-                src={profile}
-                alt="Daniel García"
-                class="rounded-full w-80 m-auto"
-            />
+    
+    <div class="flex flex-col gap-12 md:flex-row items-center mt-12 w-full z-10">
+        <div class="flex-1 p-4 flex justify-center md:justify-end">
+            <!-- Contenedor para el efecto de resplandor sutil (glow) -->
+            <div class="profile-image-wrapper relative rounded-full p-1 bg-transparent hover:scale-105 transition-transform duration-300 ease-out">
+                <Image
+                    src={profile}
+                    alt="Daniel García"
+                    class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover profile-image"
+                />
+            </div>
+        </div>
+        
+
+        <div class="flex-1 p-4 text-center md:text-left">
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+                Daniel García
+            </h1>
+            <p class="text-xl text-slate-400 max-w-lg mx-auto md:mx-0">
+                {i18n.SEO_DESCRIPTION}
+            </p>
         </div>
     </div>
 </section>
 
 <style>
-    img {
-        border: 1px solid #14d4c9;
-        box-shadow: 0 0 10px #14d4c9;
-        transition: 0.1s;
+    /* Definimos los colores del tema sutil */
+    :root {
+        --color-glow-primary: #14d4c9; /* Rojizo */
+        --color-glow-secondary: #ff0055; /* Rojizo tenue similar al '~1.62B' */
+        --color-glow-hover: #ff7979; /* Blanco para hover intenso */
     }
 
-    img:hover {
-        transform: scale(1.5rem);
+    .profile-image-wrapper {
+        /* Borde y resplandor inicial muy sutil, mezclando los colores */
+        border: 2px solid color-mix(in srgb, var(--color-glow-primary) 50%, var(--color-glow-secondary) 50%);
+        box-shadow: 
+            0 0 15px color-mix(in srgb, var(--color-glow-primary) 30%, transparent),
+            0 0 30px color-mix(in srgb, var(--color-glow-secondary) 20%, transparent);
+        transition: all 0.2s ease-out;
+    }
+
+    /* Efecto hover intenso en el contenedor de la imagen */
+    .profile-image-wrapper:hover {
+        border-color: var(--color-glow-hover);
         box-shadow:
-            0 0 25px #14d4c9,
-            0 0 50px #14d4c9;
+            0 0 20px color-mix(in srgb, var(--color-glow-primary) 60%, transparent),
+            0 0 35px color-mix(in srgb, var(--color-glow-secondary) 50%, transparent),
+            0 0 40px color-mix(in srgb, var(--color-glow-hover) 30%, transparent);
+    }
+
+    /* Asegurar que la imagen no tenga bordes raros */
+    .profile-image {
+        border: none;
+        box-shadow: none;
     }
 </style>

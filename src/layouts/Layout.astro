@@ -16,19 +16,40 @@
 		<meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="relative min-h-screen antialiased bg-[#020617] text-slate-200">
 		<slot />
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		color-scheme: light dark;
+		color-scheme: dark;
 	}
+
+	/* Fondo base con degradado radial sutil (púrpura tenue en el centro) */
+	body {
+		background:
+		 radial-gradient(circle at center, hsla(288, 61%, 10%, 0.8) 0%, #020617 70%);
+
+	}
+
+	/* Pseudo-elemento para la grilla de fondo, similar a la imagen */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -10; /* Detrás de todo */
+        opacity: 0.15; /* Muy sutil */
+        background-image: 
+            linear-gradient(#2a3b55 1px, transparent 1px), 
+            linear-gradient(90deg, #2a3b55 1px, transparent 1px);
+        background-size: 40px 40px; /* Tamaño del patrón de la grilla */
+        mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%); /* Desvanece los bordes */
+    }
 
 	.container{
 		max-width: 70rem;
 		margin: auto;
-		padding: 0 .5rem;
+		padding: 0 1rem;
 	}
 </style>
