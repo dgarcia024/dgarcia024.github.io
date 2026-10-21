@@ -1,12 +1,21 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Presentation  from "./Presentation.astro";
+import Layout from '../layouts/Layout.astro';
+import Home from './sections/Home.astro';
+import Experience from './sections/Experience.astro';
+import Projects from './sections/Projects.astro';
+import Skills from './sections/Skills.astro';
+import Contact from './sections/Contact.astro';
 
-import { getI18N } from "../i18n";
+import { getI18N } from '../i18n';
+
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
-<Layout title={i18n.SEO_TITLE} description={i18n.SEO_DESCRIPTION}>
-   <Presentation />
+<Layout title={i18n.pageMeta.home.title} description={i18n.pageMeta.home.description}>
+    <Home />
+    <Experience />
+    <Projects />
+    <Skills />
+    <Contact />
 </Layout>

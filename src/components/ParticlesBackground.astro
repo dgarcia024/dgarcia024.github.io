@@ -38,17 +38,17 @@
             maxAlpha: number;
             decay: number;
 
-            constructor() {
+            constructor(colors: string[]) {
                 // Nacen en un área central/inferior o aleatoria
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
                 this.size = Math.random() * 2 + 1; // Tamaño entre 1px y 3px
                 this.speedX = (Math.random() - 0.3) * 1.2; // Movimiento horizontal suave
                 this.speedY = -Math.random() * 1.5 - 0.5;   // Movimiento hacia arriba
-                
-                // Colores alternados entre cian y rojizo tenue (como en Omniroute)
-                this.color = Math.random() > 0.5 ? "#14d4c9" : "#ff0055";
-                
+
+                // Colores tomados del tema global (src/styles/global.css)
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+
                 this.alpha = 0;
                 this.maxAlpha = Math.random() * 0.5 + 0.2; // Opacidad máxima sutil
                 this.decay = Math.random() * 0.008 + 0.003; // Velocidad de desvanecimiento
@@ -92,11 +92,18 @@
             }
         }
 
+        // Colores del tema global (src/styles/global.css)
+        const rootStyles = getComputedStyle(document.documentElement);
+        const themeColors = [
+            rootStyles.getPropertyValue("--color-primary").trim() || "#14d4c9",
+            rootStyles.getPropertyValue("--color-secondary").trim() || "#ff0055",
+        ];
+
         // Crear una cantidad adecuada de partículas
         const particleCount = 50;
         const particles: Particle[] = [];
         for (let i = 0; i < particleCount; i++) {
-            const p = new Particle();
+            const p = new Particle(themeColors);
             // Esparcirlas inicialmente por toda la pantalla para que no aparezcan de golpe
             p.y = Math.random() * height;
             particles.push(p);
@@ -123,9 +130,18 @@
         };
     }
 
+    // Evita bucles de animación duplicados: astro:page-load y DOMContentLoaded
+    // pueden disparar la inicialización más de una vez (p. ej. con View Transitions).
+    let cleanup: (() => void) | undefined;
+
+    function start() {
+        cleanup?.();
+        cleanup = initCanvasParticles();
+    }
+
     // Ejecutar al cargar la página
-    document.addEventListener("DOMContentLoaded", initCanvasParticles);
-    document.addEventListener("astro:page-load", initCanvasParticles);
+    document.addEventListener("DOMContentLoaded", start);
+    document.addEventListener("astro:page-load", start);
 </script>
 
 <style>

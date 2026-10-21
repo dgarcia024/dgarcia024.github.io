@@ -1,12 +1,41 @@
 ---
  import '../styles/global.css';
- import Header  from '../components/Header.astro';
+
  import '@fontsource-variable/onest';
 
+ import Navbar from '../components/Navbar.astro';
+import Header from '../components/Header.astro';
+
+import { getI18N } from '../i18n';
+import { localePrefix } from '../lib/locales';
+
  const { title, description } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+// La página es única: solo cambia el prefijo de idioma
+const prefix = localePrefix(currentLocale);
+const esUrl = new URL(`${prefix === '/en' ? '' : '/'}`, Astro.site).href;
+const enUrl = new URL('/en/', Astro.site).href;
+
+/*
+ * Datos estructurados (schema.org/Person). En una página única sustituye en
+ * parte a las URLs por sección: Google puede generar rich results con ellos.
+ */
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: i18n.profile.name,
+    jobTitle: i18n.profile.jobTitle,
+    description: i18n.pageMeta.home.description,
+    url: new URL(prefix === '/en' ? '/en/' : '/', Astro.site).href,
+    sameAs: i18n.profile.sameAs,
+    knowsAbout: i18n.skills.groups.flatMap((group) => group.items)
+};
 ---
 <!doctype html>
-<html lang="en">
+<html lang={Astro.currentLocale}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -14,42 +43,27 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={Astro.url.href} />
+		<link rel="alternate" hreflang="es" href={esUrl} />
+		<link rel="alternate" hreflang="en" href={enUrl} />
+		<link rel="alternate" hreflang="x-default" href={esUrl} />
+		<meta property="og:type" content="profile" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={Astro.url.href} />
+		<meta property="og:image" content={new URL('/favicon.svg', Astro.site).href} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL('/favicon.svg', Astro.site).href} />
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
 		<title>{title}</title>
 	</head>
-	<body class="relative min-h-screen antialiased bg-[#020617] text-slate-200">
-		<slot />
+	<body class="relative min-h-screen antialiased bg-void">
+		<Navbar />
+		<div class="container">
+			<Header />
+			<slot />
+		</div>
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		color-scheme: dark;
-	}
-
-	/* Fondo base con degradado radial sutil (púrpura tenue en el centro) */
-	body {
-		background:
-		 radial-gradient(circle at center, hsla(288, 61%, 10%, 0.8) 0%, #020617 70%);
-
-	}
-
-	/* Pseudo-elemento para la grilla de fondo, similar a la imagen */
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -10; /* Detrás de todo */
-        opacity: 0.15; /* Muy sutil */
-        background-image: 
-            linear-gradient(#2a3b55 1px, transparent 1px), 
-            linear-gradient(90deg, #2a3b55 1px, transparent 1px);
-        background-size: 40px 40px; /* Tamaño del patrón de la grilla */
-        mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%); /* Desvanece los bordes */
-    }
-
-	.container{
-		max-width: 70rem;
-		margin: auto;
-		padding: 0 1rem;
-	}
-</style>

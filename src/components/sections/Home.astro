@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import profile from "../../assets/avatar.png";
+import { getI18N } from "../../i18n";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+// import ParticlesBackground from "../ParticlesBackground.astro"; // Importar el nuevo componente
+---
+
+<section id="home" class="relative flex flex-col items-center justify-center overflow-hidden px-5 md:px-20">
+    <div class="flex w-full flex-col items-center gap-8 md:flex-row md:gap-10 z-10 animate-rise">
+        <div class="flex-1 p-4 flex justify-center md:justify-end">
+            <!-- Contenedor para el efecto de resplandor sutil (glow) -->
+            <div class="profile-image-wrapper relative rounded-full bg-transparent hover:scale-105">
+                <Image
+                    src={profile}
+                    alt="Daniel García"
+                    class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover profile-image"
+                />
+            </div>
+        </div>
+
+
+        <div class="flex-[2_1_0] flex flex-col justify-center">
+            <!-- Rol: eyebrow (no es un heading, el h1 es el nombre) -->
+            <p class="text-primary text-lg font-bold">{i18n.PRESENTATION_ROLE}</p>
+            <h1 class="text-[1.375rem] font-bold text-balance min-[60rem]:text-display">
+                {i18n.PRESENTATION_TITLE}
+                Daniel <span class="text-gradient">García</span>
+            </h1>
+            <p class="pt-2 text-pretty leading-8 text-fg-muted sm:max-w-[82%]" set:html={i18n.PRESENTATION_DESCRIPTION}></p>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Los colores vienen del tema global (src/styles/global.css):
+       --color-primary / --color-secondary / --color-accent */
+    .profile-image-wrapper {
+        /* Borde y resplandor inicial muy sutil, mezclando los colores */
+        border: 2px solid color-mix(in srgb, var(--color-primary) 50%, var(--color-secondary) 50%);
+        box-shadow: 
+            0 0 15px color-mix(in srgb, var(--color-primary) 30%, transparent),
+            0 0 30px color-mix(in srgb, var(--color-secondary) 20%, transparent);
+        transition:
+            border-color 0.3s ease-out,
+            box-shadow 0.3s ease-out,
+            transform 0.3s ease-out;
+    }
+
+    /* Efecto hover intenso en el contenedor de la imagen */
+    .profile-image-wrapper:hover {
+        border-color: var(--color-accent);
+        box-shadow:
+            0 0 20px color-mix(in srgb, var(--color-primary) 60%, transparent),
+            0 0 35px color-mix(in srgb, var(--color-secondary) 50%, transparent),
+            0 0 40px color-mix(in srgb, var(--color-accent) 30%, transparent);
+    }
+
+    /* Asegurar que la imagen no tenga bordes raros */
+    .profile-image {
+        border: none;
+        box-shadow: none;
+    }
+</style>

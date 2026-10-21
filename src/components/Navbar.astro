@@ -1,0 +1,150 @@
+---
+import { Icon } from "astro-icon/components";
+import { getI18N } from "../i18n";
+import { SECTIONS, type Section } from "../lib/locales";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const icons: Record<Section, string> = {
+    home: "mdi:home-variant-outline",
+    experience: "mdi:briefcase-outline",
+    projects: "mdi:view-grid-outline",
+    skills: "mdi:lightning-bolt-outline",
+    contact: "mdi:email-outline"
+};
+
+const items: { id: Section; label: string; icon: string }[] = SECTIONS.map((id) => ({
+    id,
+    label: i18n.nav[id],
+    icon: icons[id]
+}));
+---
+
+<!--
+    Navbar flotante tipo "glass dock":
+      · fijo, centrado, translúcido con blur
+      · entra desde fuera de pantalla (animate-nav-in)
+      · la etiqueta del icono activo se despliega con animación
+      · navega por anclas: no recarga la página
+
+    Para ponerlo arriba en lugar de abajo: cambia `bottom-6` por `top-6`
+    y `pb-32` por `pt-32` en la sección de contacto.
+-->
+<nav
+    aria-label={i18n.navLabel}
+    data-navbar
+    class="fixed bottom-6 left-1/2 z-[1000] flex -translate-x-1/2 rounded-full border border-white/18 bg-primary/10 px-3 py-2 shadow-nav backdrop-blur-[7px] animate-nav-in"
+>
+    <ul class="flex items-center gap-1">
+        {
+            items.map((item) => (
+                <li>
+                    <a
+                        href={`#${item.id}`}
+                        data-nav-link={item.id}
+                        title={item.label}
+                        class="group relative flex items-center rounded-full px-2.5 py-2 text-fg-muted transition-colors hover:bg-primary/20 hover:text-primary"
+                    >
+                        <Icon name={item.icon} class="relative z-10 h-7 w-7 shrink-0" />
+                        <span class="nav-label relative z-0 w-max max-w-0 overflow-hidden text-xs font-medium whitespace-nowrap opacity-0">
+                            {item.label}
+                        </span>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<style>
+    /* La etiqueta está colapsada: solo se despliega en el icono activo */
+    .nav-label {
+        max-width: 0;
+        margin-left: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition:
+            max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            opacity 0.25s ease-out;
+    }
+
+    /* Estado activo: lo aplica el scroll-spy de más abajo */
+    .is-active,
+    .is-active:hover {
+        color: var(--color-accent);
+        background-color: color-mix(in srgb, var(--color-accent) 18%, transparent);
+    }
+
+    /* La etiqueta sale desde detrás del icono (estilo dock de macOS) */
+    .is-active .nav-label {
+        max-width: 12rem;
+        margin-left: 0.5rem;
+        opacity: 1;
+        animation: nav-label-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--nav-label-delay, 0s) both;
+    }
+
+    .is-active :global(svg) {
+        filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-accent) 65%, transparent));
+    }
+</style>
+
+<script>
+    // Marca como activo el icono de la sección visible (scroll-spy).
+    function initNavSpy() {
+        const nav = document.querySelector<HTMLElement>('[data-navbar]');
+        if (!nav || nav.dataset.spyReady === 'true') return;
+        nav.dataset.spyReady = 'true';
+
+        const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'));
+        const sections = links
+            .map((link) => document.getElementById(link.dataset.navLink ?? ''))
+            .filter((section): section is HTMLElement => section !== null);
+
+        const setActive = (id: string | null) => {
+            for (const link of links) {
+                const active = link.dataset.navLink === id;
+                link.classList.toggle('is-active', active);
+                if (active) {
+                    link.setAttribute('aria-current', 'true');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            }
+        };
+
+        const update = () => {
+            const threshold = window.innerHeight * 0.35;
+            let current: string | null = sections[0]?.id ?? null;
+
+            for (const section of sections) {
+                if (section.getBoundingClientRect().top - threshold <= 0) {
+                    current = section.id;
+                }
+            }
+
+            // Al final de la página, activa la última sección
+            const atBottom =
+                window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+            if (atBottom && sections.length > 0) {
+                current = sections[sections.length - 1]!.id;
+            }
+
+            setActive(current);
+        };
+
+        // La primera etiqueta se despliega cuando el dock se asienta
+        nav.style.setProperty('--nav-label-delay', '0.5s');
+        update();
+
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+
+        // Después de la entrada, las etiquetas ya no necesitan retardo
+        setTimeout(() => nav.style.setProperty('--nav-label-delay', '0s'), 1600);
+    }
+
+    initNavSpy();
+    document.addEventListener('astro:page-load', initNavSpy);
+</script>

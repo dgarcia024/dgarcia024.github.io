@@ -1,0 +1,24 @@
+---
+import Section from "./Section.astro";
+import { getI18N } from "../../i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Section id="experience" title={i18n.experience.title} description={i18n.experience.description}>
+    <ol class="flex flex-col gap-5">
+        {
+            i18n.experience.items.map((item) => (
+                <li class="rounded-xl border border-border-weak bg-surface/60 p-5 transition-colors hover:border-primary/60">
+                    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                        <h3 class="text-lg font-semibold">{item.role}</h3>
+                        <span class="text-sm font-medium text-primary">{item.period}</span>
+                    </div>
+                    <p class="mt-1 text-fg-muted">{item.company}</p>
+                    <p class="mt-3 text-fg-muted">{item.description}</p>
+                </li>
+            ))
+        }
+    </ol>
+</Section>

@@ -1,0 +1,10 @@
+---
+import App from '../../components/App.astro';
+import { localeStaticPaths } from '../../lib/locales';
+
+export function getStaticPaths() {
+	return localeStaticPaths();
+}
+---
+
+<App section="home" />

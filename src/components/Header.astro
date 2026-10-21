@@ -1,13 +1,43 @@
 ---
 import { getI18N } from "../i18n";
+
 const { currentLocale } = Astro;
-const i18n = getI18N({currentLocale})
+const i18n = getI18N({ currentLocale });
+
+// Selector de idioma: la página es única, solo cambia el prefijo
+const otherLocale = currentLocale === "en" ? "es" : "en";
+const switchHref = otherLocale === "en" ? "/en/" : "/";
 ---
-<main class="w-full flex justify-around items-center py-3">
-    <nav class="flex flex-row gap-x-8">
-        <a href="/">{i18n.nav.home}</a>
-        <a href="#">{i18n.nav.about}</a>
-        <a href="/">{i18n.nav.experience}</a>
-        <a href="/">{i18n.nav.projects}</a>
-    </nav>
-</main>
+
+<header class="w-full flex justify-between items-center gap-4 px-5 py-4 md:px-20">
+    <!-- Handle -->
+    <!-- <a
+        href="#home"
+        class="inline-flex items-center gap-2 rounded-lg bg-surface/40 px-3 py-1.5 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary/10 hover:shadow-glow"
+    >
+        
+        <span class="font-mono text-lg font-semibold tracking-tight">@dgarcia024</span>
+    </a> -->
+    <div class="inline-flex items-center gap-2 rounded-lg bg-surface/40 px-3 py-1.5 backdrop-blur-sm">
+        <span
+            aria-hidden="true"
+            class="h-2 w-2 rounded-full bg-primary shadow-glow"
+        ></span>
+        <h2 class="font-bold text-[1.5rem]">
+            @<span class="text-primary">dgarcia</span>
+        </h2>
+    </div>
+
+    <!-- Selector de idioma -->
+    <div class="flex items-center gap-2 rounded-lg border border-grid/40 px-3 py-1.5 transition-colors hover:border-primary/60 hover:bg-surface/40">
+        <span class="text-fg-muted text-sm">{i18n.languageLabel}</span>
+        <a
+            href={switchHref}
+            lang={otherLocale}
+            hreflang={otherLocale}
+            class="text-primary hover:text-accent transition-colors"
+        >
+            {i18n.languageOptions[otherLocale]}
+        </a>
+    </div>
+</header>

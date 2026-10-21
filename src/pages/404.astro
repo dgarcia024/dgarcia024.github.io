@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getI18N } from '../i18n';
+import { localePrefix } from '../lib/locales';
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+const homeHref = localePrefix(currentLocale) === '/en' ? '/en/' : '/';
+---
+
+<Layout title={`404 | ${i18n.pageMeta.home.title}`} description={i18n.notFound.description}>
+    <section class="relative container flex min-h-[80vh] flex-col items-center justify-center py-16 text-center">
+        <p class="font-mono text-7xl font-bold text-primary md:text-8xl">404</p>
+        <h1 class="mt-4 text-3xl font-bold text-balance md:text-4xl">
+            {i18n.notFound.heading}
+        </h1>
+        <p class="mt-3 max-w-md text-fg-muted">{i18n.notFound.description}</p>
+        <a
+            href={homeHref}
+            class="mt-8 inline-flex items-center gap-2 rounded-lg border border-primary/50 px-5 py-3 font-medium text-primary transition-all hover:bg-primary/10 hover:shadow-glow"
+        >
+            {i18n.notFound.backHome}
+        </a>
+    </section>
+</Layout>

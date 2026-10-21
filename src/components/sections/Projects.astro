@@ -1,0 +1,29 @@
+---
+import Section from "./Section.astro";
+import { getI18N } from "../../i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Section id="projects" title={i18n.projects.title} description={i18n.projects.description}>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+            i18n.projects.items.map((item) => (
+                <article class="group flex flex-col rounded-xl border border-border-weak bg-surface/60 p-5 transition-all hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow">
+                    <h3 class="text-lg font-semibold transition-colors group-hover:text-primary">
+                        {item.name}
+                    </h3>
+                    <p class="mt-2 grow text-fg-muted">{item.description}</p>
+                    <ul class="mt-4 flex flex-wrap gap-2">
+                        {item.tags.map((tag) => (
+                            <li class="rounded-md bg-surface-2 px-2.5 py-1 text-xs font-medium text-primary">
+                                {tag}
+                            </li>
+                        ))}
+                    </ul>
+                </article>
+            ))
+        }
+    </div>
+</Section>

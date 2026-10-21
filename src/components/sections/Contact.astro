@@ -1,0 +1,47 @@
+---
+import Section from "./Section.astro";
+import { getI18N } from "../../i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Section
+    id="contact"
+    title={i18n.contact.title}
+    description={i18n.contact.description}
+    class="pb-32"
+>
+    <div class="grid gap-6 md:grid-cols-2 md:items-center">
+        <div class="rounded-xl border border-border-weak bg-surface/60 p-6">
+            <p class="max-w-[82%] text-pretty text-fg-muted">{i18n.contact.description}</p>
+            <a
+                href={`mailto:${i18n.contact.email}`}
+                class="mt-6 inline-flex items-center gap-2 rounded-lg border border-primary/50 px-5 py-3 font-medium text-primary transition-all hover:bg-primary/10 hover:shadow-glow"
+            >
+                {i18n.contact.email}
+            </a>
+        </div>
+
+        <ul class="flex flex-col gap-3">
+            {
+                i18n.contact.links.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            class="group flex items-center justify-between rounded-lg border border-border-weak px-5 py-3 transition-colors hover:border-primary/60 hover:bg-surface/60"
+                        >
+                            <span>{link.label}</span>
+                            <span
+                                aria-hidden="true"
+                                class="text-primary transition-transform group-hover:translate-x-1"
+                            >
+                                →
+                            </span>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</Section>
