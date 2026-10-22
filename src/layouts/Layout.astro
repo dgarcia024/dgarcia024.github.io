@@ -4,7 +4,6 @@
  import '@fontsource-variable/onest';
 
  import Navbar from '../components/Navbar.astro';
-import Header from '../components/Header.astro';
 
 import { getI18N } from '../i18n';
 import { localePrefix } from '../lib/locales';
@@ -62,7 +61,6 @@ const jsonLd = {
 	<body class="relative min-h-screen antialiased bg-void">
 		<Navbar />
 		<div class="container">
-			<Header />
 			<slot />
 		</div>
 	</body>

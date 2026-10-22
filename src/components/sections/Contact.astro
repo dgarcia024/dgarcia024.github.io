@@ -14,10 +14,9 @@ const i18n = getI18N({ currentLocale });
 >
     <div class="grid gap-6 md:grid-cols-2 md:items-center">
         <div class="rounded-xl border border-border-weak bg-surface/60 p-6">
-            <p class="max-w-[82%] text-pretty text-fg-muted">{i18n.contact.description}</p>
             <a
                 href={`mailto:${i18n.contact.email}`}
-                class="mt-6 inline-flex items-center gap-2 rounded-lg border border-primary/50 px-5 py-3 font-medium text-primary transition-all hover:bg-primary/10 hover:shadow-glow"
+                class="inline-flex items-center gap-2 rounded-lg border border-primary/50 px-5 py-3 font-medium text-primary transition-all hover:bg-primary/10 hover:shadow-glow"
             >
                 {i18n.contact.email}
             </a>

@@ -23,9 +23,14 @@ const switchHref = otherLocale === "en" ? "/en/" : "/";
             aria-hidden="true"
             class="h-2 w-2 rounded-full bg-primary shadow-glow"
         ></span>
-        <h2 class="font-bold text-[1.5rem]">
-            @<span class="text-primary">dgarcia</span>
-        </h2>
+        <!--
+            El handle es un elemento de presentación, no un encabezado: el <h1>
+            de la página es el nombre (en Home.astro). Usar <h2> aquí lo
+            dejaría antes del <h1> en el orden de navegación por headings.
+        -->
+        <p class="font-bold text-[1.5rem]">
+            @<span class="text-primary">dgarcia024</span>
+        </p>
     </div>
 
     <!-- Selector de idioma -->
