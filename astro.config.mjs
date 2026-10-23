@@ -18,8 +18,6 @@ const { SITE_URL = 'https://dgarcia024.github.io/' } = loadEnv(
 export default defineConfig({
    site: SITE_URL,
 
-   base: '/sistemapp',
-
    devToolbar: { enabled: false },
    i18n: {
       defaultLocale: 'es',
