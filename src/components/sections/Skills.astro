@@ -4,6 +4,39 @@ import { getI18N } from "../../i18n";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+
+// Icon mapping for tech skills - only skills actually used in i18n
+const skillIcons: Record<string, string> = {
+  // Back-end
+  "C#": "/icons/csharp.svg",
+  "Entity Framework Code-First": "/icons/entity-framework.svg",
+  "Python": "/icons/python.svg",
+  "MySQL": "/icons/mysql.svg",
+  "Transact-SQL": "/icons/transact-sql.svg",
+  // Front-end
+  "ReactJS": "/icons/react.svg",
+  "JavaScript (ES6+)": "/icons/javascript.svg",
+  "HTML5": "/icons/html5.svg",
+  "CSS3": "/icons/css3.svg",
+  "Astro": "/icons/astro.svg",
+  "Tailwind CSS": "/icons/tailwind.svg",
+  // Cloud & Tools
+  "GitHub (Git)": "/icons/github.svg",
+  "VS Code": "/icons/vscode.svg",
+  // Methodologies
+  "Scrum": "/icons/scrum.svg",
+  // Soft Skills (no icons needed, fallback)
+  "Responsabilidad incondicional": "",
+  "Comunicación asertiva": "",
+  "Humildad profesional": "",
+  "Unconditional responsibility": "",
+  "Assertive communication": "",
+  "Professional humility": "",
+};
+
+const getIcon = (skill: string): string => {
+  return skillIcons[skill] || "/icons/javascript.svg";
+};
 ---
 
 <Section id="skills" title={i18n.skills.title} description={i18n.skills.description}>
@@ -11,10 +44,20 @@ const i18n = getI18N({ currentLocale });
         {
             i18n.skills.groups.map((group) => (
                 <article class="rounded-xl border border-border-weak bg-surface/60 p-5 transition-colors hover:border-primary/60">
-                    <h3 class="font-semibold text-primary">{group.name}</h3>
+                    <h3 class="font-semibold text-primary flex items-center gap-2">
+                        <span class="text-base">{group.name}</span>
+                    </h3>
                     <ul class="mt-4 flex flex-wrap gap-2">
                         {group.items.map((skill) => (
-                            <li class="rounded-md bg-surface-2 px-3 py-1 text-sm text-fg-muted transition-colors hover:text-primary">
+                            <li class="rounded-md bg-surface-2 px-3 py-1 text-sm text-fg-muted transition-colors hover:text-primary flex items-center gap-1.5">
+                                {getIcon(skill) && (
+                                    <img 
+                                        src={getIcon(skill)} 
+                                        alt="" 
+                                        class="w-4 h-4 opacity-80 hover:opacity-100 transition-opacity"
+                                        aria-hidden="true"
+                                    />
+                                )}
                                 {skill}
                             </li>
                         ))}

@@ -38,7 +38,7 @@ const jsonLd = {
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
@@ -50,11 +50,11 @@ const jsonLd = {
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={Astro.url.href} />
-		<meta property="og:image" content={new URL('/favicon.svg', Astro.site).href} />
+		<meta property="og:image" content={new URL('/favicon.ico', Astro.site).href} />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={new URL('/favicon.svg', Astro.site).href} />
+		<meta name="twitter:image" content={new URL('/favicon.ico', Astro.site).href} />
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
 		<title>{title}</title>
 	</head>
