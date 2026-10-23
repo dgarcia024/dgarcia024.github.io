@@ -2,7 +2,7 @@ const pageMeta = {
     home: {
         title: "Daniel Garcia | @dgarcia024 | Portfolio",
         description:
-            "Hello, I’m Daniel García. I am a computer engineer with six years of experience in software development and the optimization of critical processes."
+            "Computer Engineer focused on software development and critical process optimization. Unconditional responsibility towards project goals and assertive communication in multidisciplinary teams, ensuring efficient and scalable technical solutions."
     },
     experience: {
         title: "Experience | Daniel García",
@@ -41,14 +41,14 @@ export default {
     pageMeta,
 
     profile: {
-        name: "Daniel García",
-        jobTitle: "Software developer",
-        sameAs: ["https://github.com/dgarcia024"]
+        name: "Daniel Antonio García Vásquez",
+        jobTitle: "Software Engineer",
+        sameAs: ["https://github.com/dgarcia024", "https://linkedin.com/in/dgarcia024"]
     },
 
     PRESENTATION_TITLE: "Hello, I'm ",
-    PRESENTATION_ROLE: "Software developer",
-    PRESENTATION_DESCRIPTION: "With 6+ years of experience, I specialize in web applications with <span class='text-primary font-bold'>React</span> and APIs with <span class='text-primary font-bold'>Python</span> and <span class='text-primary font-bold'>.NET</span>.",
+    PRESENTATION_ROLE: "Software Engineer",
+    PRESENTATION_DESCRIPTION: "Software Engineer with <span class='text-primary font-bold'>+6 years experience</span> in web development using <span class='text-primary font-bold'>React</span>, <span class='text-primary font-bold'>C#</span> and <span class='text-primary font-bold'>Python</span>. Specialist in critical process optimization and medical systems automation.",
 
     notFound: {
         heading: "Page not found",
@@ -56,87 +56,94 @@ export default {
         backHome: "Back to home"
     },
 
-    // TODO: replace with the real information
     experience: {
         title: "Experience",
         description:
             "Track record in software development and optimization of critical processes.",
         items: [
             {
-                role: "Software developer",
-                company: "Company name",
-                period: "2023 — Present",
-                description: "Main responsibilities and notable achievements in the role."
+                role: "Software Developer",
+                company: "Instituto de Ciencias Sostenibles (ICS)",
+                period: "2024 — 2025",
+                description:
+                    "Development and maintenance of legacy systems for medical management using ReactJS, C#, MySQL and Transact-SQL. Automation of clinical processes with Python + MySQL."
             },
             {
-                role: "Software developer",
-                company: "Company name",
-                period: "2021 — 2023",
-                description: "Main responsibilities and notable achievements in the role."
+                role: "Data Quality Control Assistant",
+                company: "Instituto de Ciencias Sostenibles (ICS)",
+                period: "2023",
+                description:
+                    "Administration and monitoring of MySQL databases for critical medical records. Standardization of operational processes for bulk data loading."
             },
             {
-                role: "Software engineering intern",
-                company: "Company name",
-                period: "2020 — 2021",
-                description: "Main responsibilities and notable achievements in the role."
+                role: "Software Developer",
+                company: "RadarNic (E-Commerce)",
+                period: "2019 — 2022",
+                description:
+                    "Development and maintenance of RadarNic e-commerce web system using ReactJS, C#, Transact-SQL, Stripe API."
             }
         ]
     },
 
-    // TODO: replace with the real information
     projects: {
         title: "Projects",
         description: "A selection of projects I have worked on.",
         items: [
             {
-                name: "Project name",
-                description: "Short description of the problem it solves and your contribution.",
-                tags: ["React", ".NET"],
+                name: "Medical Management Systems (ICS)",
+                description: "Development and maintenance of legacy systems for medical management, clinical process automation, and optimization of critical medical databases.",
+                tags: ["ReactJS", "C#", "MySQL", "Transact-SQL", "Python"],
                 href: "#"
             },
             {
-                name: "Project name",
-                description: "Short description of the problem it solves and your contribution.",
-                tags: ["Python", "API"],
+                name: "RadarNic E-Commerce",
+                description: "Development and maintenance of e-commerce platform with Stripe payment integration and full-stack architecture.",
+                tags: ["ReactJS", "C#", "Transact-SQL", "Stripe API"],
                 href: "#"
             },
             {
-                name: "Project name",
-                description: "Short description of the problem it solves and your contribution.",
-                tags: ["React", "Python"],
+                name: "Clinical Process Automation",
+                description: "Clinical process automation with Python and MySQL to optimize medical records management and bulk data loading.",
+                tags: ["Python", "MySQL", "Automation"],
                 href: "#"
             }
         ]
     },
 
-    // TODO: replace with the real information
     skills: {
         title: "Skills",
         description: "Technologies and tools I work with every day.",
         groups: [
             {
-                name: "Frontend",
-                items: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"]
+                name: "Back-end",
+                items: ["C#", "Entity Framework Code-First", "Python", "MySQL", "Transact-SQL"]
             },
             {
-                name: "Backend",
-                items: ["Python", ".NET", "Node.js", "REST APIs", "SQL"]
+                name: "Front-end",
+                items: ["ReactJS", "JavaScript (ES6+)", "HTML5", "CSS3", "Astro", "Tailwind CSS"]
             },
             {
-                name: "Tools",
-                items: ["Git", "GitHub Actions", "Docker", "Linux", "CI/CD"]
+                name: "Cloud & Tools",
+                items: ["GitHub (Git)", "VS Code"]
+            },
+            {
+                name: "Methodologies",
+                items: ["Scrum"]
+            },
+            {
+                name: "Soft Skills",
+                items: ["Unconditional responsibility", "Assertive communication", "Professional humility"]
             }
         ]
     },
 
-    // TODO: replace the email and links with the real ones
     contact: {
         title: "Contact",
         description: "Got a project in mind? Drop me a line and let's talk.",
-        email: "your-email@example.com",
+        email: "danielgv2404@gmail.com",
         links: [
             { label: "GitHub", href: "https://github.com/dgarcia024" },
-            { label: "LinkedIn", href: "#" },
+            { label: "LinkedIn", href: "https://linkedin.com/in/dgarcia024" },
             { label: "X / Twitter", href: "#" }
         ]
     }

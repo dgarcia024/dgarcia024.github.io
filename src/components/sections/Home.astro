@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import profile from "../../assets/avatar.png";
+const profileUrl = "/avatar-dg.svg";
 import { getI18N } from "../../i18n";
 import Header from "../Header.astro";
 const { currentLocale } = Astro;
@@ -17,11 +16,11 @@ const i18n = getI18N({ currentLocale });
     <Header />
     <div class="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-5 py-8 md:px-20">
         <div class="flex w-full flex-col items-center gap-8 md:flex-row md:gap-10 z-10 animate-rise">
-            <div class="flex-1 p-4 flex justify-center md:justify-end">
+            <div class="p-4 flex justify-center md:justify-end">
                 <!-- Contenedor para el efecto de resplandor sutil (glow) -->
                 <div class="profile-image-wrapper relative rounded-full bg-transparent hover:scale-105">
-                    <Image
-                        src={profile}
+                    <img
+                        src={profileUrl}
                         alt="Daniel García"
                         class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover profile-image"
                     />
@@ -40,7 +39,7 @@ const i18n = getI18N({ currentLocale });
                 <p
                     class="pt-2 text-pretty leading-8 text-fg-muted sm:max-w-[82%]"
                     set:html={i18n.PRESENTATION_DESCRIPTION}
-                />
+                ></p>
             </div>
         </div>
     </div>

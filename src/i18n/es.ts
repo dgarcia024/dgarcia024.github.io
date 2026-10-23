@@ -2,7 +2,7 @@ const pageMeta = {
     home: {
         title: "Daniel Garcia | @dgarcia024 | Portafolio",
         description:
-            "Hola, Soy Daniel Garcia. Ingeniero en Computación con seis años de experiencia en desarrollo de software y optimización de procesos críticos."
+            "Ingeniero en Computación con enfoque en el desarrollo de software y optimización de procesos críticos. Responsabilidad incondicional hacia los objetivos del proyecto y capacidad de comunicación asertiva en equipos multidisciplinarios, asegurando soluciones técnicas eficientes y escalables."
     },
     experience: {
         title: "Experiencia | Daniel García",
@@ -41,14 +41,14 @@ export default {
     pageMeta,
 
     profile: {
-        name: "Daniel García",
-        jobTitle: "Desarrollador de software",
-        sameAs: ["https://github.com/dgarcia024"]
+        name: "Daniel Antonio García Vásquez",
+        jobTitle: "Ingeniero de software",
+        sameAs: ["https://github.com/dgarcia024", "https://linkedin.com/in/dgarcia024"]
     },
 
     PRESENTATION_TITLE: "Hola, Soy ",
-    PRESENTATION_ROLE: "Desarrollador de software",
-    PRESENTATION_DESCRIPTION: "Con +6 años de experiencia, me especializo en aplicaciones web con <span class='text-primary font-bold'>React</span> y APIs con <span class='text-primary font-bold'>Python</span> y <span class='text-primary font-bold'>.NET</span>.",
+    PRESENTATION_ROLE: "Ingeniero de software",
+    PRESENTATION_DESCRIPTION: "Ingeniero de software con <span class='text-primary font-bold'>+6 años de experiencia</span> en desarrollo web con <span class='text-primary font-bold'>React</span>, <span class='text-primary font-bold'>C#</span> y <span class='text-primary font-bold'>Python</span>. Especialista en optimización de procesos críticos y automatización de sistemas",
 
     notFound: {
         heading: "Página no encontrada",
@@ -57,87 +57,94 @@ export default {
         backHome: "Volver al inicio"
     },
 
-    // TODO: reemplazar con la información real
     experience: {
         title: "Experiencia",
         description:
             "Trayectoria en desarrollo de software y optimización de procesos críticos.",
         items: [
             {
-                role: "Desarrollador de software",
-                company: "Nombre de la empresa",
-                period: "2023 — Actualidad",
-                description: "Responsabilidades principales y logros destacados en el puesto."
+                role: "Desarrollador de Sistemas",
+                company: "Instituto de Ciencias Sostenibles (ICS)",
+                period: "2024 — 2025",
+                description:
+                    "Desarrollo y mantenimiento sobre sistemas legados para gestión médica utilizando ReactJS, C#, MySQL y Transact-SQL. Automatización de procesos clínicos con Python + MySQL."
             },
             {
-                role: "Desarrollador de software",
-                company: "Nombre de la empresa",
-                period: "2021 — 2023",
-                description: "Responsabilidades principales y logros destacados en el puesto."
+                role: "Asistente de Control de Calidad de Datos",
+                company: "Instituto de Ciencias Sostenibles (ICS)",
+                period: "2023",
+                description:
+                    "Administración y monitoreo de BD MySQL para registros médicos críticos. Estandarización de procesos operativos para la carga masiva de datos."
             },
             {
-                role: "Practicante de desarrollo",
-                company: "Nombre de la empresa",
-                period: "2020 — 2021",
-                description: "Responsabilidades principales y logros destacados en el puesto."
+                role: "Desarrollador de sistemas",
+                company: "RadarNic (E-Commerce)",
+                period: "2019 — 2022",
+                description:
+                    "Desarrollo y mantenimiento de sistema web de comercio RadarNic utilizando ReactJS, C#, Transact-SQL, Stripe API."
             }
         ]
     },
 
-    // TODO: reemplazar con la información real
     projects: {
         title: "Proyectos",
         description: "Una selección de proyectos en los que he trabajado.",
         items: [
             {
-                name: "Nombre del proyecto",
-                description: "Breve descripción del problema que resuelve y tu aporte en él.",
-                tags: ["React", ".NET"],
+                name: "Sistemas de gestión médica (ICS)",
+                description: "Desarrollo y mantenimiento de sistemas legados para gestión médica, automatización de procesos clínicos y optimización de bases de datos médicas críticas.",
+                tags: ["ReactJS", "C#", "MySQL", "Transact-SQL", "Python"],
                 href: "#"
             },
             {
-                name: "Nombre del proyecto",
-                description: "Breve descripción del problema que resuelve y tu aporte en él.",
-                tags: ["Python", "API"],
+                name: "RadarNic E-Commerce",
+                description: "Desarrollo y mantenimiento de plataforma de comercio electrónico con integración de pagos Stripe y arquitectura full-stack.",
+                tags: ["ReactJS", "C#", "Transact-SQL", "Stripe API"],
                 href: "#"
             },
             {
-                name: "Nombre del proyecto",
-                description: "Breve descripción del problema que resuelve y tu aporte en él.",
-                tags: ["React", "Python"],
+                name: "Automatización de procesos clínicos",
+                description: "Automatización de procesos clínicos con Python y MySQL para optimizar la gestión de registros médicos y carga masiva de datos.",
+                tags: ["Python", "MySQL", "Automatización"],
                 href: "#"
             }
         ]
     },
 
-    // TODO: reemplazar con la información real
     skills: {
         title: "Habilidades",
         description: "Tecnologías y herramientas con las que trabajo cada día.",
         groups: [
             {
-                name: "Frontend",
-                items: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"]
+                name: "Back-end",
+                items: ["C#", "Entity Framework Code-First", "Python", "MySQL", "Transact-SQL"]
             },
             {
-                name: "Backend",
-                items: ["Python", ".NET", "Node.js", "REST APIs", "SQL"]
+                name: "Front-end",
+                items: ["ReactJS", "JavaScript (ES6+)", "HTML5", "CSS3", "Astro", "Tailwind CSS"]
             },
             {
-                name: "Herramientas",
-                items: ["Git", "GitHub Actions", "Docker", "Linux", "CI/CD"]
+                name: "Cloud & Tools",
+                items: ["GitHub (Git)", "VS Code"]
+            },
+            {
+                name: "Metodologías",
+                items: ["Scrum"]
+            },
+            {
+                name: "Habilidades Blandas",
+                items: ["Responsabilidad incondicional", "Comunicación asertiva", "Humildad profesional"]
             }
         ]
     },
 
-    // TODO: reemplazar el correo y los enlaces con los reales
     contact: {
         title: "Contacto",
         description: "¿Tienes un proyecto en mente? Escríbeme y lo charlamos.",
-        email: "tu-correo@ejemplo.com",
+        email: "danielgv2404@gmail.com",
         links: [
             { label: "GitHub", href: "https://github.com/dgarcia024" },
-            { label: "LinkedIn", href: "#" },
+            { label: "LinkedIn", href: "https://linkedin.com/in/dgarcia024" },
             { label: "X / Twitter", href: "#" }
         ]
     }

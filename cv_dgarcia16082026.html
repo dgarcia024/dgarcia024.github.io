@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Daniel Antonio García Vásquez</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+            color: #000;
+            margin: 0;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 25px;
+            border-bottom: 3px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 26px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .info {
+            text-align: justify;
+            text-justify: inter-word;
+            /* Distribuye el espacio solo entre palabras, no entre letras */
+            hyphens: auto;
+            /* Permite el corte de palabras con guiones */
+            -webkit-hyphens: auto;
+            /* Soporte para navegadores basados en WebKit */
+            -ms-hyphens: auto;
+            /* Soporte para Internet Explorer/Edge */
+            line-height: 1.6;
+            /* Mejora la legibilidad al dar aire entre líneas */
+        }
+
+        h2 {
+            font-size: 18px;
+            border-left: 5px solid #000;
+            padding-left: 10px;
+            text-transform: uppercase;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid #ccc;
+            margin-left: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: #000;
+            border-radius: 50%;
+        }
+
+        .date {
+            font-weight: bold;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .company {
+            font-style: italic;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Daniel Antonio García Vásquez</h1>
+            <div class="contact-info">
+                Ciudad Sandino, Managua | Teléfono: +505 8678 0043 | danielgv2404@gmail.com<br>
+                LinkedIn: linkedin.com/in/dgarcia024
+            </div>
+        </header>
+
+        <section>
+            <h2>Resumen Profesional</h2>
+            <p class="info">Ingeniero en Computación con enfoque en el desarrollo de software y optimización de procesos
+                críticos.
+                Responsabilidad incondicional hacia los objetivos del proyecto y capacidad de comunicación asertiva en
+                equipos
+                multidisciplinarios, asegurando soluciones técnicas eficientes y escalables.
+            </p>
+        </section>
+
+        <section>
+            <h2>Experiencia Profesional</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">2024 — 2025</span>
+                    <p class="job-title">Desarrollador de Sistemas</p>
+                    <span class="company">Instituto de Ciencias Sostenibles (ICS)</span>
+                    <ul>
+                        <li>Desarrollo y mantenimiento sobre sistemas legados para gestión medica utilizando ReactJS,
+                            C#, MySQL y Transact-SQL</li>
+                        <li>Automatizacion de procesos clinicos con Python + MySQL</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="date">2023</span>
+                    <p class="job-title">Asistente de Control de Calidad de Datos</p>
+                    <span class="company">Instituto de Ciencias Sostenibles (ICS)</span>
+                    <ul>
+                        <li>Administración y monitoreo de BD MySQL para registros médicos críticos</li>
+                        <li>Estandarización de procesos operativos para la carga masiva de datos.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="date">2019 — 2022</span>
+                    <p class="job-title">Desarrollador de sistemas</p>
+                    <span class="company">RadarNic (E-Commerce)</span>
+                    <ul>
+                        <li>Desarrollo y mantenimiento de sistema web de comercio RadarNic utilizando ReactJS,
+                            C#, Transact-SQL, Stripe API</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Educación</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">2012 — 2017</span>
+                    <p class="job-title">Ingeniería en Computación</p>
+                    <span class="company">Universidad Nacional de Ingeniería (UNI-RUSB)</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid-container">
+            <section>
+                <h2>Tecnologías y Competencias</h2>
+                <ul>
+                    <li><strong>Back-end:</strong> C#, Entity Framework Code-First, Python, MySQL, Transact-SQL</li>
+                    <li><strong>Front-end:</strong> ReactJS, JavaScript (ES6+), HTML5/CSS3, Astro, Tailwindcss</li>
+                    <li><strong>Cloud & Tools:</strong> Github (Git), VS Code</li>
+                    <li><strong>Metodologías:</strong>Scrum</li>
+                    <li><strong>Conductuales:</strong> Responsabilidad incondicional, Comunicación asertiva, Humildad
+                        profesional.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Otros Datos</h2>
+                <ul>
+                    <li><strong>Idiomas:</strong> Español (Nativo), Inglés (A2).</li>
+                    <li><strong>Referencia:</strong> <br>
+                        Martín Oracio Mendoza <br>
+                        Jefe de Sistemas - TIGO S.A. <br>
+                        Tel: +505 8886 5456
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
