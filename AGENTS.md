@@ -58,6 +58,23 @@ Search for `TODO`:
 - `skills.groups[]` — real stack
 - `contact.email` + `contact.links[]` — real email/social
 
+## Assets
+
+| Asset | Location | Description |
+|-------|----------|-------------|
+| Avatar placeholder | `public/avatar-dg.svg` | DG initials, glow pulse, rotating ring, cyan theme |
+| Favicon | `public/favicon.svg` | `</>` in cyan→purple gradient |
+| Tech icons | `public/icons/*.svg` | 14 icons in cyan (#14d4c9): C#, EF, Python, MySQL, T-SQL, React, JS, HTML5, CSS3, Astro, Tailwind, GitHub, VS Code, Scrum, Python, C# |
+| Avatar placeholder (old) | `src/assets/avatar-placeholder.svg` | backup, matrix rain animation |
+
+## Assets added recently
+
+| Asset | Location | Description |
+|-------|----------|-------------|
+| Avatar placeholder (animated) | `public/avatar-dg.svg` | DG initials, pulse glow, rotating ring |
+| Favicon | `public/favicon.svg` | `</>` in cyan→purple gradient |
+| Tech icons (14) | `public/icons/*.svg` | C#, EF, Python, MySQL, T-SQL, React, JS, HTML5, CSS3, Astro, Tailwind, GitHub, VS Code, Scrum, Python, C#, all in cyan #14d4c9 |
+
 ## Verification checklist
 
 ```bash
@@ -72,5 +89,5 @@ Workflow: `.github/workflows/deploy.yml` on push to main/master.
 
 ## Branch
 
-- `feature_diseno` (active) → push to GitHub
-- `master` is behind
+- `master` (active) → deployed to `https://dgarcia024.github.io/`
+- `feature_diseno` merged into master
